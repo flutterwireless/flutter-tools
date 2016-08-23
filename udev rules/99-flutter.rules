@@ -1,0 +1,7 @@
+# 1. Install this file to /etc/udev/rules.d/ on the host
+# 2. Run "sudo udevadm control --reload-rules"
+# 3. Run "sudo udevadm trigger"
+
+SUBSYSTEM=="tty", ATTRS{serial}=="FL_TEST", SYMLINK+="ttyACM0TS", MODE="0666"
+
+SUBSYSTEM=="tty", ATTRS{idVendor}=="03eb", ATTRS{idProduct}=="6124", SYMLINK+="ttyACM0BL", MODE="0666"
