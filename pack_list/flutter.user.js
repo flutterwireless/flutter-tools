@@ -1,4 +1,4 @@
-﻿// ==UserScript==
+// ==UserScript==
 // @namespace   flutter_packing_list
 // @include     https://flutterwireless.backerkit.com/admin/backers/*/pack_list
 // @name        Flutter packing list
@@ -146,11 +146,18 @@ $(".backerkit-order").remove()
       upgrade_quantity = reward[3]
     }
 
-    if(reward[1].includes("backordered"))
+    if(reward[1].includes("backordered") && count > 0)
     {
       include_backorders = true;
     }
 
+  }
+
+  // Fix USB cable counts
+  if(rewards[1][3] > rewards[15][3])
+  {
+    console.log("Upping USB cable QTY from " + rewards[15][3] + " to " + rewards[1][3]);
+    rewards[15][3]=rewards[1][3]
   }
 
 
